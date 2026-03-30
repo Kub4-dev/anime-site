@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Aesthetic Page</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    overflow: hidden;
+    font-family: Arial;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4), transparent);
+    animation: move 15s linear infinite;
+}
+
+@keyframes move {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(-200px,-200px); }
+}
+
+.container {
+    text-align: center;
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+img {
+    width: 320px;
+    border-radius: 20px;
+    transition: 0.4s;
+    animation: float 4s ease-in-out infinite;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.title {
+    margin-top: 20px;
+    font-size: 22px;
+    color: #333;
+    letter-spacing: 2px;
+}
+
+/* FULLSCREEN */
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: contain;
+    border-radius: 0;
+    background: black;
+    z-index: 999;
+    animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <img src="girl.jpeg" id="img">
+    <div class="title">Aesthetic Vibe ✨</div>
+</div>
+
+<script>
+const img = document.getElementById("img");
+
+img.onclick = () => {
+    img.classList.toggle("fullscreen");
+};
+</script>
+
+</body>
+</html>
